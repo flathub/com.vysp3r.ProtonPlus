@@ -13,12 +13,12 @@
         "--filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam",
         "--filesystem=~/.steam/root",
         "--filesystem=~/.local/share/Steam",
-        "--filesystem=~/.var/app/net.lutris.Lutris/data/lutris/runners",
-        "--filesystem=~/.local/share/lutris/runners",
-        "--filesystem=~/.var/app/com.heroicgameslauncher.hgl/config/heroic/tools",
-        "--filesystem=~/.config/heroic/tools",
-        "--filesystem=~/.var/app/com.usebottles.bottles/data/bottles/runners",
-        "--filesystem=~/.local/share/bottles/runners",
+        "--filesystem=~/.var/app/net.lutris.Lutris/data/lutris",
+        "--filesystem=~/.local/share/lutris",
+        "--filesystem=~/.var/app/com.heroicgameslauncher.hgl/config/heroic",
+        "--filesystem=~/.config/heroic",
+        "--filesystem=~/.var/app/com.usebottles.bottles/data/bottles",
+        "--filesystem=~/.local/share/bottles",
         "--talk-name=org.gtk.vfs.*",
         "--filesystem=xdg-run/gvfsd"
     ],
@@ -31,8 +31,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Vysp3r/ProtonPlus.git",
-                    "tag": "v0.3.9",
-                    "commit": "908da8ad514067dce2b9d2010c6427755c60d91d"
+                    "tag": "v0.3.10",
+                    "commit": "cf12998f113cb6f5f4b81a215e208662e2ded11c"
                 }
             ]
         }

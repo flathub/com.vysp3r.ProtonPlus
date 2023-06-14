@@ -42,8 +42,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Vysp3r/ProtonPlus.git",
-                    "tag": "v0.4.3",
-                    "commit": "7ca2003c0b33e5982cbaedd4f0f13674add2293c"
+                    "tag": "v0.4.4",
+                    "commit": "6d5e7f4866efc9a876297e933a59b62d9aaca8cf"
                 }
             ]
         }

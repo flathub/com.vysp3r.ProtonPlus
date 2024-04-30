@@ -1,7 +1,7 @@
 {
     "id": "com.vysp3r.ProtonPlus",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "45",
+    "runtime-version": "46",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.vala"
@@ -45,8 +45,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Vysp3r/ProtonPlus.git",
-                    "tag": "v0.4.9",
-                    "commit": "96bb681605d2f06a72901e35947bd1ba25157429"
+                    "tag": "v0.4.10",
+                    "commit": "42d871f1e55e05a951a7750fddfa8d8a7f31c7cc"
                 }
             ]
         }

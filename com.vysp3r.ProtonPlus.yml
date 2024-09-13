@@ -50,3 +50,4 @@ modules:
           tag-pattern: ^v(\d+\.\d+\.\d+(?:-[0-9A-Za-z.\-]+)?)$
           version-scheme: semantic
           is-main-source: true
+        commit: 40a2cd7ed954b317e454bb7c904bcf130009a74a

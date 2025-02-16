@@ -1,6 +1,6 @@
 id: com.vysp3r.ProtonPlus
 runtime: org.gnome.Platform
-runtime-version: '46'
+runtime-version: '47'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.vala
@@ -30,11 +30,11 @@ build-options:
 cleanup:
   - /include
   - /lib/pkgconfig
-  - /share/pkgconfig
-  - /share/aclocal
   - /man
-  - /share/man
   - /share/gtk-doc
+  - /share/man
+  - /share/pkgconfig
+  - /share/vala
   - '*.la'
   - '*.a'
 modules:
@@ -44,10 +44,10 @@ modules:
     sources:
       - type: git
         url: https://github.com/Vysp3r/ProtonPlus.git
-        tag: v0.4.20
+        tag: v0.4.22
         x-checker-data:
           type: git
           tag-pattern: ^v(\d+\.\d+\.\d+(?:-[0-9A-Za-z.\-]+)?)$
           version-scheme: semantic
           is-main-source: true
-        commit: 5c8d7b4febdd1296dd45263947b795088129bda8
+        commit: 97387c702423ddbe0c108689102dec77c8cba31c

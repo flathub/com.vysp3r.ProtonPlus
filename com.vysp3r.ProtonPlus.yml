@@ -44,10 +44,10 @@ modules:
     sources:
       - type: git
         url: https://github.com/Vysp3r/ProtonPlus.git
-        tag: v0.5.1
+        tag: v0.5.1-1
         x-checker-data:
           type: git
           tag-pattern: ^v(\d+\.\d+\.\d+(?:-[0-9A-Za-z.\-]+)?)$
           version-scheme: semantic
           is-main-source: true
-        commit: e2a6b4b2a10b26043fceba689a311106f1aa72e9
+        commit: 92f7945ce252b57b868b9efc3fd0a92834eae079

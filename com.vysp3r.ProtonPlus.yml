@@ -2,8 +2,6 @@ id: com.vysp3r.ProtonPlus
 runtime: org.gnome.Platform
 runtime-version: '49'
 sdk: org.gnome.Sdk
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.vala
 command: protonplus
 finish-args:
   - --device=dri
@@ -25,19 +23,6 @@ finish-args:
   - --filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam
   - --filesystem=~/.var/app/net.lutris.Lutris/data/lutris
   - --filesystem=~/.var/app/io.github.fastrizwaan.WineZGUI/data/winezgui
-build-options:
-  append-path: /usr/lib/sdk/vala/bin
-  prepend-ld-library-path: /usr/lib/sdk/vala/lib
-cleanup:
-  - /include
-  - /lib/pkgconfig
-  - /man
-  - /share/gtk-doc
-  - /share/man
-  - /share/pkgconfig
-  - /share/vala
-  - '*.la'
-  - '*.a'
 modules:
   - name: ProtonPlus
     builddir: true
@@ -46,9 +31,9 @@ modules:
       - type: git
         url: https://github.com/Vysp3r/ProtonPlus.git
         tag: v0.5.16
+        commit: 655af865699f1a364dcfc97f716e419bbc9a7f31
         x-checker-data:
           type: git
           tag-pattern: ^v(\d+\.\d+\.\d+(?:-[0-9A-Za-z.\-]+)?)$
           version-scheme: semantic
           is-main-source: true
-        commit: 655af865699f1a364dcfc97f716e419bbc9a7f31

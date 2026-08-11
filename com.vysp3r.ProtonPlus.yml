@@ -2,20 +2,27 @@ id: com.vysp3r.ProtonPlus
 runtime: org.gnome.Platform
 runtime-version: '50'
 sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.vala
 command: protonplus
 finish-args:
+  - --require-version=1.16.0
   - --device=dri
+  # For controller support
+  - --device=input
   - --share=ipc
   - --share=network
   - --socket=fallback-x11
   - --socket=wayland
+  # Ensure the bundled GSettings schema is discoverable in all Flatpak environments.
+  - --env=GSETTINGS_SCHEMA_DIR=/app/share/glib-2.0/schemas
   # Host-spawn access is needed to check if host contains dependencies,
   # and to execute various compatibility tool installers on the host.
   - --talk-name=org.freedesktop.Flatpak
   # Required GNOME/GTK permissions.
   - --talk-name=org.gtk.vfs.*
   - --filesystem=xdg-run/gvfsd
-  # Home is required due to "~/stl" installations on Steam Deck.
+  # Required because Steam libraries can be installed anywhere on the host.
   - --filesystem=host
   # Request access to supported Flatpak apps
   - --filesystem=~/.var/app/com.heroicgameslauncher.hgl/config/heroic
@@ -23,6 +30,20 @@ finish-args:
   - --filesystem=~/.var/app/com.valvesoftware.Steam/data/Steam
   - --filesystem=~/.var/app/net.lutris.Lutris/data/lutris
   - --filesystem=~/.var/app/io.github.fastrizwaan.WineZGUI/data/winezgui
+build-options:
+  append-path: /usr/lib/sdk/vala/bin
+  prepend-ld-library-path: /usr/lib/sdk/vala/lib
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /man
+  - /share/aclocal
+  - /share/gtk-doc
+  - /share/man
+  - /share/pkgconfig
+  - /share/vala
+  - '*.a'
+  - '*.la'
 modules:
   - name: ProtonPlus
     builddir: true
@@ -30,8 +51,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Vysp3r/ProtonPlus.git
-        tag: v0.6.1-1
-        commit: efa34c0b78dd1deda2d4a080613562181f7f8ff0
+        tag: v0.6.3
+        commit: d538016a5db40708cf7dd3c36a2ce2c2b470a793
         x-checker-data:
           type: git
           tag-pattern: ^v(\d+\.\d+\.\d+(?:-[0-9A-Za-z.\-]+)?)$

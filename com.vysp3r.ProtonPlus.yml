@@ -8,6 +8,7 @@ command: protonplus
 finish-args:
   - --require-version=1.16.0
   - --device=dri
+  # For controller support
   - --device=input
   - --share=ipc
   - --share=network

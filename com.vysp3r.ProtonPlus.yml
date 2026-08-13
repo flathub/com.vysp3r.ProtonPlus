@@ -6,9 +6,11 @@ sdk-extensions:
   - org.freedesktop.Sdk.Extension.vala
 command: protonplus
 finish-args:
-  - --require-version=1.16.0
   - --device=dri
-  # For controller support
+  # Preserve controller support on older Flatpak clients, while newer clients
+  # use the narrower input-device permission.
+  - --device=all
+  - --device-if=all:!has-input-device
   - --device=input
   - --share=ipc
   - --share=network
@@ -51,8 +53,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Vysp3r/ProtonPlus.git
-        tag: v0.6.3
-        commit: d538016a5db40708cf7dd3c36a2ce2c2b470a793
+        tag: v0.6.4
+        commit: 5bbc0945ca0e88900c84aeeae20784e57d52e150
         x-checker-data:
           type: git
           tag-pattern: ^v(\d+\.\d+\.\d+(?:-[0-9A-Za-z.\-]+)?)$

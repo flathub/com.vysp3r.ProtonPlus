@@ -1,6 +1,6 @@
 id: com.vysp3r.ProtonPlus
 runtime: org.gnome.Platform
-runtime-version: '50'
+runtime-version: '51'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.vala
@@ -46,6 +46,74 @@ cleanup:
   - '*.a'
   - '*.la'
 modules:
+  # AppStream and its dependencies were removed from the GNOME 51 runtime.
+  - name: libfyaml
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DENABLE_NETWORK=OFF
+      - -DENABLE_LIBCLANG=OFF
+      - -DBUILD_TESTING=OFF
+    cleanup:
+      - /bin
+    sources:
+      - type: archive
+        url: https://github.com/pantoniou/libfyaml/releases/download/v0.9.6/libfyaml-0.9.6.tar.gz
+        sha256: a59cc3331e2eb903ec36933ad52a45888041cac31e44f553a00511131242c483
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/pantoniou/libfyaml/releases
+          version-query: '[.[] | select(.prerelease == false and (.tag_name | test("^v[0-9.]+$")))]
+            | first | .tag_name | sub("^v"; "")'
+          url-query: '"https://github.com/pantoniou/libfyaml/releases/download/v" + $version
+            + "/libfyaml-" + $version + ".tar.gz"'
+
+  - name: libxmlb
+    buildsystem: meson
+    config-opts:
+      - -Dstemmer=false
+      - -Dintrospection=false
+      - -Dgtkdoc=false
+      - -Dtests=false
+      - -Dcli=false
+    cleanup:
+      - /libexec
+      - /share/installed-tests
+    sources:
+      - type: git
+        url: https://github.com/hughsie/libxmlb.git
+        tag: 0.3.29
+        commit: d942cd68a7d78e35b312b9299e69f68f9cd2e503
+        x-checker-data:
+          type: git
+          tag-pattern: ^([\d.]+)$
+
+  - name: appstream
+    buildsystem: meson
+    config-opts:
+      - -Dgir=true
+      - -Dvapi=true
+      - -Dcompose=false
+      - -Dman=false
+      - -Dapidocs=false
+      - -Dstemming=false
+      - -Dblake3-support=false
+      - -Dsystemd=false
+      - -Dbash-completion=false
+      - -Dqt=false
+    cleanup:
+      - /bin
+      - /lib/girepository-1.0
+      - /share/gir-1.0
+      - /share/installed-tests
+    sources:
+      - type: git
+        url: https://github.com/ximion/appstream.git
+        tag: v1.2.1
+        commit: 4e3a4de973810e25bbada1b822185ed4d90eb1f5
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+
   - name: ProtonPlus
     builddir: true
     buildsystem: meson
